@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: page-api-service
+spec:
+  selector:
+    app: page-api-server
+  ports:
+    - name: http-api
+      protocol: TCP
+      port: 31507
+      targetPort: 8080
+      nodePort: 31507
+    - name: grpc-client-port
+      protocol: TCP
+      port: 30016
+      targetPort: 30016
+      nodePort: 30016  
+    - name: grpc-manager-port
+      protocol: TCP
+      port: 30017
+      targetPort: 30017
+      nodePort: 30017      
+  type: NodePort
